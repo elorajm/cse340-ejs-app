@@ -1,8 +1,25 @@
 <%- include('partials/header', { title }) %>
-
 <main>
-  <h1><%= title %></h1>
-  <p>Welcome to my Express application! This site demonstrates the power of templating engines.</p>
+  <h1>Welcome to Our Website</h1>
+  <section>
+    <h2>About This App</h2>
+    <p>This site is a demonstration of a modern Express.js application using the MVC (Model-View-Controller) pattern, EJS templates, and custom middleware.</p>
+    <p>Browse our interactive course catalog, explore dynamic theming, and see how query parameters and route-specific middleware work in a real project.</p>
+  </section>
+  <section>
+    <h2>Features</h2>
+    <article>
+      <h3>Course Catalog</h3>
+      <p>View detailed information about courses, departments, and sections. Try sorting sections by time, professor, or room on each course page.</p>
+    </article>
+    <article>
+      <h3>Custom Middleware</h3>
+      <p>See global and route-specific middleware in action, including dynamic greetings, random themes, and demo headers.</p>
+    </article>
+    <article>
+      <h3>MVC Structure</h3>
+      <p>All logic is organized into models, controllers, and views for maintainability and scalability.</p>
+    </article>
+  </section>
 </main>
-
 <%- include('partials/footer') %>
