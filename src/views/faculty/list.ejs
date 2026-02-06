@@ -1,0 +1,18 @@
+<%- include('../partials/header') %>
+<h1>Faculty Directory</h1>
+<form method="get" action="">
+  <label>Sort by:</label>
+  <select name="sort" onchange="this.form.submit()">
+    <option value="department" <%= sortBy === 'department' ? 'selected' : '' %>>Department</option>
+    <option value="name" <%= sortBy === 'name' ? 'selected' : '' %>>Name</option>
+    <option value="title" <%= sortBy === 'title' ? 'selected' : '' %>>Title</option>
+  </select>
+</form>
+<ul>
+  <% faculty.forEach(f => { %>
+    <li>
+      <a href="/faculty/<%= f.id %>"><%= f.name %></a> - <%= f.department %> (<%= f.title %>)
+    </li>
+  <% }) %>
+</ul>
+<%- include('../partials/footer') %>

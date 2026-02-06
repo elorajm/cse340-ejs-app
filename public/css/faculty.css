@@ -1,0 +1,43 @@
+/* Faculty Directory Styles */
+.faculty-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+  padding: 0;
+  list-style: none;
+}
+.faculty-list li {
+  background: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+.faculty-list a {
+  font-weight: bold;
+  color: #2a4d8f;
+  text-decoration: none;
+}
+.faculty-list a:hover {
+  text-decoration: underline;
+}
+.faculty-detail {
+  max-width: 500px;
+  margin: 2rem auto;
+  background: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.faculty-detail h1 {
+  margin-top: 0;
+}
+.faculty-detail ul {
+  padding: 0;
+  list-style: none;
+}
+.faculty-detail li {
+  margin-bottom: 0.5rem;
+}
