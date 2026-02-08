@@ -1,0 +1,50 @@
+<%- include('../partials/header') %>
+
+<h1><%= course.courseCode %> - <%= course.name %></h1>
+
+<p>
+  <strong>Department:</strong> <%= course.department %><br>
+  <strong>Credits:</strong> <%= course.creditHours %>
+</p>
+
+<% if (course.description) { %>
+  <p><%= course.description %></p>
+<% } %>
+
+<hr>
+
+<h2>Sections</h2>
+
+<form method="get" action="">
+  <label for="sort">Sort by:</label>
+  <select name="sort" id="sort" onchange="this.form.submit()">
+    <option value="time" <%= currentSort === 'time' ? 'selected' : '' %>>Time</option>
+    <option value="professor" <%= currentSort === 'professor' ? 'selected' : '' %>>Professor</option>
+  </select>
+</form>
+
+<% if (!sections || sections.length === 0) { %>
+  <p>No sections available.</p>
+<% } else { %>
+  <div class="section-list">
+    <% sections.forEach(section => { %>
+      <div class="section-card">
+        <div><strong>Time:</strong> <%= section.time %></div>
+        <div><strong>Room:</strong> <%= section.room %></div>
+
+        <% if (section.professor) { %>
+          <div>
+            <strong>Professor:</strong>
+            <a href="/faculty/<%= section.professorSlug %>"><%= section.professor %></a>
+          </div>
+        <% } %>
+      </div>
+    <% }) %>
+  </div>
+<% } %>
+
+<p>
+  <a href="/catalog">← Back to Catalog</a>
+</p>
+
+<%- include('../partials/footer') %>

@@ -1,11 +1,29 @@
 <%- include('../partials/header') %>
-<h1><%= faculty.name %></h1>
+
+<h1><%= facultyMember.name %></h1>
+
 <ul>
-  <li><strong>Title:</strong> <%= faculty.title %></li>
-  <li><strong>Department:</strong> <%= faculty.department %></li>
-  <li><strong>Office:</strong> <%= faculty.office %></li>
-  <li><strong>Phone:</strong> <%= faculty.phone %></li>
-  <li><strong>Email:</strong> <a href="mailto:<%= faculty.email %>"><%= faculty.email %></a></li>
+  <% if (facultyMember.title) { %>
+    <li><strong>Title:</strong> <%= facultyMember.title %></li>
+  <% } %>
+
+  <li><strong>Department:</strong> <%= facultyMember.department %></li>
+
+  <% if (facultyMember.office) { %>
+    <li><strong>Office:</strong> <%= facultyMember.office %></li>
+  <% } %>
+
+  <% if (facultyMember.phone) { %>
+    <li><strong>Phone:</strong> <%= facultyMember.phone %></li>
+  <% } %>
+
+  <% if (facultyMember.email) { %>
+    <li><strong>Email:</strong> <%= facultyMember.email %></li>
+  <% } %>
 </ul>
-<a href="/faculty">Back to Faculty Directory</a>
+
+<p>
+  <a href="/faculty">← Back to Faculty Directory</a>
+</p>
+
 <%- include('../partials/footer') %>
