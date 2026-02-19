@@ -27,36 +27,33 @@ const showLoginForm = (req, res) => {
  * Process login form submission.
  */
 const processLogin = async (req, res) => {
-    // Check for validation errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        console.error('Validation errors:', errors.array());
+        // Store each validation error as a separate flash message
+        errors.array().forEach(error => {
+            req.flash('error', error.msg);
+        });
         return res.redirect('/login');
     }
-    // Extract email and password from request body
     const { email, password } = req.body;
     try {
-        // Find user by email
         const user = await findUserByEmail(email);
         if (!user) {
-            console.log('User not found:', email);
+            req.flash('error', 'Invalid email or password');
             return res.redirect('/login');
         }
-        // Verify password against stored hash
         const passwordMatch = await verifyPassword(password, user.password);
         if (!passwordMatch) {
-            console.log('Invalid password for user:', email);
+            req.flash('error', 'Invalid email or password');
             return res.redirect('/login');
         }
-        // SECURITY: Remove password from user object before storing in session
         delete user.password;
-        // Store user in session
         req.session.user = user;
-        // Redirect to dashboard on successful login
+        req.flash('success', `Welcome back, ${user.name}!`);
         res.redirect('/dashboard');
     } catch (error) {
-        // Model functions do not catch errors, so handle them here
         console.error('Error during login:', error);
+        req.flash('error', 'Unable to log in at this time. Please try again later.');
         res.redirect('/login');
     }
 };

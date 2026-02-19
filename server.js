@@ -6,6 +6,7 @@ import session from 'express-session';
 import connectPgSimple from 'connect-pg-simple';
 // Import MVC components
 import routes from './src/controllers/routes.js';
+import flash from './src/middleware/flash.js';
 import { addLocalVariables } from './src/middleware/global.js';
 
 //  Database setup + connection test
@@ -70,6 +71,8 @@ app.set('views', path.join(__dirname, 'src/views'));
  * Global Middleware
  */
 app.use(addLocalVariables);
+// Flash message middleware (must come after session and global middleware)
+app.use(flash);
 
 /**
  * Routes
