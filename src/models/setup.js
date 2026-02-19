@@ -83,6 +83,14 @@ const setupDatabase = async () => {
 
   await queryWithSslFallback(seedSQL);
 
+  // Run practice.sql if it exists (for student assignments)
+  const practicePath = join(__dirname, 'sql', 'practice.sql');
+  if (fs.existsSync(practicePath)) {
+      const practiceSQL = fs.readFileSync(practicePath, 'utf8');
+      await queryWithSslFallback(practiceSQL);
+      console.log('Practice database tables initialized');
+  }
+
   console.log('Database seeded successfully');
   return true;
 };
