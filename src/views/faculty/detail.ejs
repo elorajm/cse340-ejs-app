@@ -2,6 +2,13 @@
 
 <h1><%= facultyMember.name %></h1>
 
+<div class="faculty-detail">
+<img
+  class="faculty-photo faculty-photo-detail"
+  src="/images/faculty/<%= facultyMember.slug %>.jpg"
+  alt="Profile photo of <%= facultyMember.name %>"
+/>
+
 <ul>
   <% if (facultyMember.title) { %>
     <li><strong>Title:</strong> <%= facultyMember.title %></li>
@@ -21,6 +28,7 @@
     <li><strong>Email:</strong> <%= facultyMember.email %></li>
   <% } %>
 </ul>
+</div>
 
 <p>
   <a href="/faculty">← Back to Faculty Directory</a>

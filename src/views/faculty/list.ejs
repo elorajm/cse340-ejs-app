@@ -11,13 +11,18 @@
   </select>
 </form>
 
-<ul>
+<ul class="faculty-list">
   <% faculty.forEach(f => { %>
-    <li>
+    <li class="faculty-card">
+      <img
+        class="faculty-photo"
+        src="/images/faculty/<%= f.slug %>.jpg"
+        alt="Profile photo of <%= f.name %>"
+      />
       <a href="/faculty/<%= f.slug %>"><%= f.name %></a>
-      – <%= f.department %>
+      <div><%= f.department %></div>
       <% if (f.title) { %>
-        (<%= f.title %>)
+        <div><%= f.title %></div>
       <% } %>
     </li>
   <% }) %>

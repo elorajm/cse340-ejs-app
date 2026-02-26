@@ -25,13 +25,19 @@ const caCert = fs.readFileSync(
  * The connection string format is:
  * postgresql://username:password@host:port/database
  */
+// Use SSL only if DB_USE_SSL is set to 'true' (for deployment flexibility)
+const useSSL = process.env.DB_USE_SSL === 'true';
 const pool = new Pool({
   connectionString: process.env.DB_URL,
-  ssl: {
-    ca: caCert, // Use the certificate content, not the file path
-    rejectUnauthorized: true, // Keep this true for proper security
-    checkServerIdentity: () => undefined // Skip hostname verification but keep cert chain validation
-  }
+  ...(useSSL
+    ? {
+        ssl: {
+          ca: caCert,
+          rejectUnauthorized: true,
+          checkServerIdentity: () => undefined
+        }
+      }
+    : { ssl: false })
 });
 
 /**

@@ -4,11 +4,17 @@
     gap: 1.5rem;
     max-width: 800px;
     margin: 0 auto;
+    justify-items: center;
     .course-card {
         border: 1px solid #ddd;
         border-radius: 8px;
         padding: 1.5rem;
         background: #fff;
+        width: min(100%, 700px);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         transition: box-shadow 0.2s ease;
         &:hover {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -94,11 +100,18 @@
     .section-list {
         display: grid;
         gap: 1rem;
+        justify-items: center;
         .section-card {
             border: 1px solid #ddd;
             border-radius: 6px;
             padding: 1rem;
             background: #f9f9f9;
+            width: min(100%, 700px);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             .section-time {
                 font-weight: bold;
                 color: #2c5aa0;
@@ -125,4 +138,24 @@
             text-decoration: underline;
         }
     }
+}
+
+/* Explicit centering rules for browsers/environments without CSS nesting support */
+.course-list .course-card {
+    text-align: center;
+}
+
+.course-list .course-card h3,
+.course-list .course-card .course-id,
+.course-list .course-card .course-description {
+    text-align: center;
+}
+
+.section-list .section-card {
+    text-align: center;
+}
+
+.section-list .section-card div,
+.section-list .section-card a {
+    text-align: center;
 }
